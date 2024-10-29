@@ -1,21 +1,16 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
-import { logout as logoutApi } from '../../services/apiAuth';
-import toast from 'react-hot-toast';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { logout as logoutApi } from "../../services/apiAuth";
+import { useNavigate } from "react-router-dom";
 
 export function useLogout() {
-  const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const { mutate: logout, isLoading } = useMutation({
-    mutationFn: () => logoutApi(),
+    mutationFn: logoutApi,
     onSuccess: () => {
       queryClient.removeQueries();
-      navigate('/login', { replace: true });
-    },
-    onError: (err) => {
-      console.log('ERROR', err);
-      toast.error('An error occurred while logging out');
+      navigate("/login", { replace: true });
     },
   });
 

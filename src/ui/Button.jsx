@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 const sizes = {
   small: css`
@@ -47,6 +47,7 @@ const variations = {
     }
   `,
 };
+
 const Button = styled.button`
   border: none;
   border-radius: var(--border-radius-sm);
@@ -57,7 +58,8 @@ const Button = styled.button`
 `;
 
 Button.defaultProps = {
-  size: 'medium',
-  variation: 'primary',
+  variation: "primary",
+  size: "medium",
 };
+
 export default Button;

@@ -1,16 +1,16 @@
-import { useForm } from 'react-hook-form';
-import Button from '../../ui/Button';
-import Form from '../../ui/Form';
-import FormRow from '../../ui/FormRow';
-import Input from '../../ui/Input';
-import { useSignup } from './useSignup';
+import { useForm } from "react-hook-form";
+import Button from "../../ui/Button";
+import Form from "../../ui/Form";
+import FormRow from "../../ui/FormRow";
+import Input from "../../ui/Input";
+import { useSignup } from "./useSignup";
 
 // Email regex: /\S+@\S+\.\S+/
 
 function SignupForm() {
+  const { signup, isLoading } = useSignup();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
-  const { signup, isLoading } = useSignup();
 
   function onSubmit({ fullName, email, password }) {
     signup(
@@ -28,7 +28,7 @@ function SignupForm() {
           type="text"
           id="fullName"
           disabled={isLoading}
-          {...register('fullName', { required: 'This field is required' })}
+          {...register("fullName", { required: "This field is required" })}
         />
       </FormRow>
 
@@ -37,11 +37,11 @@ function SignupForm() {
           type="email"
           id="email"
           disabled={isLoading}
-          {...register('email', {
-            required: 'This field is required',
+          {...register("email", {
+            required: "This field is required",
             pattern: {
               value: /\S+@\S+\.\S+/,
-              message: 'Please enter a valid email address',
+              message: "Please provide a valid email address",
             },
           })}
         />
@@ -55,11 +55,11 @@ function SignupForm() {
           type="password"
           id="password"
           disabled={isLoading}
-          {...register('password', {
-            required: 'This field is required',
+          {...register("password", {
+            required: "This field is required",
             minLength: {
               value: 8,
-              message: 'Password must have at least 8 characters  ',
+              message: "Password needs a minimum of 8 characters",
             },
           })}
         />
@@ -70,10 +70,10 @@ function SignupForm() {
           type="password"
           id="passwordConfirm"
           disabled={isLoading}
-          {...register('passwordConfirm', {
-            required: 'This field is required',
+          {...register("passwordConfirm", {
+            required: "This field is required",
             validate: (value) =>
-              value === getValues().password || 'Passwords do not match',
+              value === getValues().password || "Passwords need to match",
           })}
         />
       </FormRow>
@@ -88,7 +88,7 @@ function SignupForm() {
         >
           Cancel
         </Button>
-        <Button>Create new user</Button>
+        <Button disabled={isLoading}>Create new user</Button>
       </FormRow>
     </Form>
   );
