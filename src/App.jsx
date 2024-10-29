@@ -12,7 +12,7 @@ import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
 import Settings from './pages/Settings';
 import Booking from './pages/Booking';
-import CheckIn from './pages/CheckIn';
+import Checkin from './pages/CheckIn';
 
 import AppLayout from './ui/AppLayout';
 import { Toaster } from 'react-hot-toast';
@@ -47,7 +47,7 @@ function App() {
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="bookings" element={<Bookings />} />
               <Route path="bookings/:bookingId" element={<Booking />} />
-              <Route path="checkin/:bookingId" element={<CheckIn />} />
+              <Route path="checkin/:bookingId" element={<Checkin />} />
               <Route path="cabins" element={<Cabins />} />
               <Route path="users" element={<Users />} />
               <Route path="account" element={<Account />} />
